@@ -75,7 +75,8 @@ int main()
         {0,0,0,4,0,0,0,0,6},
         {0,0,8,3,0,0,0,0,0},
         {9,0,0,0,8,6,7,0,0}};
-
+    
+    //This Code
     for (int i = 0; i < 9; i++)
     {
         cout << i + 1 << "줄: ";
@@ -85,7 +86,8 @@ int main()
             board[i][j] = r[j] - '0';
         }
     }
-
+    //To This Code
+    
     printSudoku(board);
     
     dfs(board, 0, 1);
