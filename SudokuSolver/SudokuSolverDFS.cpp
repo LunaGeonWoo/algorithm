@@ -56,6 +56,7 @@ void dfs(int board[9][9], int index, int n) {
     copy(&board[0][0], &board[0][0] + 9 * 9, &cpyboard[0][0]);
     cpyboard[y][x] = n;
 
+    //this code is working only windows
     /*system("cls");
     printSudoku(board);*/
 
@@ -76,7 +77,7 @@ int main()
         {0,0,8,3,0,0,0,0,0},
         {9,0,0,0,8,6,7,0,0}};
     
-    //This Code
+    //If you want to input on variable "board" delete code.
     for (int i = 0; i < 9; i++)
     {
         cout << i + 1 << "줄: ";
