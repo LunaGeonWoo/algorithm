@@ -6,27 +6,26 @@ using namespace std;
 int cnt = 0;
 
 void printSudoku(int board[9][9]) {
-    cout << "┌──────┬──────┬──────┐" << endl;
+    cout << " ┌───────┬───────┬───────┐" << endl;
     for (int i = 0; i < 9; i++) {
-
         for (int j = 0; j < 9; j++)
         {
-            if (j % 3 == 0) cout << "│ ";
+            if (j % 3 == 0) cout << " │ ";
 
             if (board[i][j] == 0) cout << ' ';
             else cout << board[i][j];
 
-            if (j == 8) cout << "│";
+            if (j == 8) cout << " │";
             else if(j%3 != 2)cout << ' ';
         }
 
         if (i == 2 || i == 5)
         {
-            cout << endl << "├──────┼──────┼──────┤";
+            cout << endl << " ├───────┼───────┼───────┤";
         }
         cout << endl;
     }
-    cout << "└──────┴──────┴──────┘" << endl;
+    cout << " └───────┴───────┴───────┘" << endl;
 }
 
 void dfs(int board[9][9], int index, int n) {
@@ -67,26 +66,27 @@ void dfs(int board[9][9], int index, int n) {
 int main()
 {
     int board[9][9] = {
-        {4,0,0,0,0,0,0,1,0},
-        {0,0,1,0,7,8,0,0,2},
-        {0,0,0,0,3,0,0,0,0},
-        {0,0,0,6,0,0,0,0,0},
-        {0,0,4,0,1,2,0,0,7},
-        {0,5,0,0,0,0,9,0,0},
-        {0,0,0,4,0,0,0,0,6},
-        {0,0,8,3,0,0,0,0,0},
-        {9,0,0,0,8,6,7,0,0}};
+        {0,1,0,0,6,0,0,0,0},
+        {0,0,8,0,0,0,3,0,0},
+        {5,0,0,1,0,7,0,0,9},
+        {0,0,0,4,0,0,0,0,0},
+        {1,0,0,9,0,2,0,0,7},
+        {0,5,0,0,0,0,0,1,0},
+        {0,3,0,2,0,6,9,0,0},
+        {0,0,0,0,5,0,0,0,6},
+        {2,0,0,0,4,0,0,0,0}
+    };
     
     //If you want to input on variable "board" delete code.
-    for (int i = 0; i < 9; i++)
-    {
-        cout << i + 1 << "줄: ";
-        string r;
-        cin >> r;
-        for (int j = 0; j < 9; j++) {
-            board[i][j] = r[j] - '0';
-        }
-    }
+    // for (int i = 0; i < 9; i++)
+    // {
+    //     cout << i + 1 << "줄: ";
+    //     string r;
+    //     cin >> r;
+    //     for (int j = 0; j < 9; j++) {
+    //         board[i][j] = r[j] - '0';
+    //     }
+    // }
     //To This Code
     
     printSudoku(board);
