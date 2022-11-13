@@ -6,26 +6,24 @@ using namespace std;
 int cnt = 0;
 
 void printSudoku(int board[9][9]) {
-    cout << " ┌───────┬───────┬───────┐" << endl;
+    cout << "┌───────┬───────┬───────┐" << endl;
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++)
         {
-            if (j % 3 == 0) cout << " │ ";
+            if (j % 3 == 0) cout << "│ ";
 
-            if (board[i][j] == 0) cout << ' ';
-            else cout << board[i][j];
-
-            if (j == 8) cout << " │";
-            else if(j%3 != 2)cout << ' ';
+            if (board[i][j] == 0) cout << "  ";
+            else cout << board[i][j] << ' ';
         }
+        cout << "│ ";
 
         if (i == 2 || i == 5)
         {
-            cout << endl << " ├───────┼───────┼───────┤";
+            cout << endl << "├───────┼───────┼───────┤";
         }
         cout << endl;
     }
-    cout << " └───────┴───────┴───────┘" << endl;
+    cout << "└───────┴───────┴───────┘" << endl;
 }
 
 void dfs(int board[9][9], int index, int n) {
