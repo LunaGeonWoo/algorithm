@@ -1,6 +1,6 @@
 *
 !*.*
-!/
+!*/
 
 # Prerequisites
 *.d
@@ -36,7 +36,6 @@
 *.app
 
 .vscode/*
-output/
 
 # Local History for Visual Studio Code
 .history/
