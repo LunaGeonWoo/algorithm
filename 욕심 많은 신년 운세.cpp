@@ -14,10 +14,10 @@ struct Line {
         return endAt.y + endAt.x - startAt.y - startAt.x + 1;
     }
     bool h_isOverlapWith(Line l) {
-        return (l.startAt.y >= startAt.y && startAt.y <= l.endAt.y) || (l.startAt.y >= endAt.y && endAt.y <= l.endAt.y);
+        return (l.startAt.x <= startAt.x && startAt.x <= l.endAt.x) || (l.startAt.x <= endAt.x && endAt.x <= l.endAt.x);
     }
     bool v_isOverlapWith(Line l) {
-        return (l.startAt.x >= startAt.x && startAt.x <= l.endAt.x) || (l.startAt.x >= endAt.x && endAt.x <= l.endAt.x);
+        return (l.startAt.y <= startAt.y && startAt.y <= l.endAt.y) || (l.startAt.y <= endAt.y && endAt.y <= l.endAt.y);
     }
     int X() { return startAt.x; }
     int Y() { return startAt.y; }
@@ -34,7 +34,7 @@ void check_horizontal(int idx, string word, int size) {
         for(int x=0; x<=M-size; x++) {
             for(int i=0; i<size; i++) {
                 if(grid[y][x+i] != word[i]) break;
-                if(i == size-1)             words_locations[H].push_back({{y,x}, {y,x+size-1}});
+                if(i == size-1) words_locations[H].push_back({{y,x}, {y,x+size-1}});
             }
         }
     }
@@ -45,7 +45,7 @@ void check_vertical(int idx, string word, int size) {
         for(int x=0; x<M; x++) {
             for(int i=0; i<size; i++) {
                 if(grid[y+i][x] != word[i]) break;
-                if(i == size-1)             words_locations[V].push_back({{y,x}, {y+size-1,x}});
+                if(i == size-1) words_locations[V].push_back({{y,x}, {y+size-1,x}});
             }
         }
     }
@@ -66,6 +66,7 @@ void fill_ansDir(int idx) {
 }
 
 int32_t main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     cin >> N >> M;
     for(int y=0; y<N; y++) 
         for(int x=0; x<M; x++) 
@@ -76,6 +77,22 @@ int32_t main() {
     for(int i=0; i<T; i++) cin >> words[i];
     for(int i=0; i<T; i++) fill_words_locations(i);
     for(int i=0; i<T; i++) fill_ansDir(i);
+    
+    // for(auto word : words_locations) {
+    //     for(auto location : word) {
+    //         location.print();
+    //     }
+    // }
+    // cout << '\n';
+
+    for(int y=0; y<N; y++) {
+        cout << ans_h[y].size() << ' ';
+    }
+    cout << '\n';
+    for(int x=0; x<M; x++) {
+        cout << ans_v[x].size() << ' ';
+    }
+    cout << '\n';
 
     for(int y=0; y<N; y++) {
         if(ans_h[y].size() == 1) {
@@ -84,7 +101,6 @@ int32_t main() {
         } else if(ans_h[y].size() == 0) continue;
         int max_len = 0;
         vector<Line> sub_ans;
-
         for(int num=1; num<=ans_h[y].size(); num++){
             vector<int> shuffle(ans_h[y].size());
             fill_n(shuffle.begin(), num, 1);
@@ -130,7 +146,6 @@ int32_t main() {
         vector<Line> sub_ans;
 
         for(int num=1; num<=ans_v[x].size(); num++){
-            cout << num << ' ';
             vector<int> shuffle(ans_v[x].size());
             fill_n(shuffle.begin(), num, 1);
             do {
@@ -163,10 +178,9 @@ int32_t main() {
                 }
             } while (prev_permutation(shuffle.begin(), shuffle.end()));
         } 
-        cout << '\n';
         ans.insert(ans.end(), sub_ans.begin(), sub_ans.end());
     }
-    cout << ans.size() << '\n';
+    cout <<'\n' << ans.size() << '\n';
     for(auto a : ans) {
         a.print();
     }
