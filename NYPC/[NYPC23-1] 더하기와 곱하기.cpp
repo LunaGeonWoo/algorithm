@@ -35,7 +35,7 @@ int32_t main() {
         else if(onlyMult < v.back().sum + pow2[i]) break;
         else v.push_back({v.back().sum + pow2[i], v.back().profit + 1});
     }
-    int mini = onlyMult;
-    for(auto k : v) mini = min(mini, K - k.profit + k.sum);
-    cout << mini;
+    int ans = onlyMult;
+    for(auto k : v) ans = min(ans, K - k.profit + k.sum);
+    cout << ans;
 }

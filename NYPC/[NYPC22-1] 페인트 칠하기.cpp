@@ -67,8 +67,7 @@ int main()
         for (int x = 0; x < M; x++)
             cin >> grid[y][x];
 
-    while (paintAll())
-        ;
+    while (paintAll()) ;
 
     char a;
     int b, c;
